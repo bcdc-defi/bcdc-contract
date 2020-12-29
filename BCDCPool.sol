@@ -80,7 +80,7 @@ contract BCDCPool is Ownable {
     // The block number when BCDC mining starts.
     uint256 public startBlock;
 
-    uint256 public endBlock;
+    uint256 public endBlock = 0;
 
     event Deposit(address indexed user, uint256 indexed pid, uint256 amount);
     event Withdraw(address indexed user, uint256 indexed pid, uint256 amount);
@@ -300,10 +300,4 @@ contract BCDCPool is Ownable {
         require(msg.sender == teamAddr, "dev: wut?");
         teamAddr = _teamAddr;
     }
-
-    // Update dev address by the previous dev.
-    function setEndBlock(uint256 blockNumber) public onlyOwner {
-        endBlock = blockNumber;
-    }
-    
 }
